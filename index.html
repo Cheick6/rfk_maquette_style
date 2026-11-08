@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.K.H Industry - 50 Styles</title>
+    <!-- Importation des 10 polices Google strictes -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&family=Lora:ital,wght@0,500;1,500&family=Montserrat:wght@400;700&family=Oswald:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Quicksand:wght@500;700&family=Rajdhani:wght@500;700&family=Roboto:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
+        /* VARIABLES DE BASE (Couleurs strictes de la marque) */
+        :root {
+            --bg: #f4f6f8; 
+            --text: #111111; 
+            --primary: #175389; 
+            --secondary: #e0e0e0; 
+            --card: #ffffff; 
+            --radius: 8px; 
+            --font: 'Inter', sans-serif; 
+            --shadow: 0 4px 10px rgba(0,0,0,0.1);
+            --border: 1px solid transparent;
+            --anim-float: float-subtle 3s ease-in-out infinite;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            margin: 0;
+            padding: 0;
+            transition: all 0.4s ease;
+        }
+
+        /* BARRE DE SELECTION FIXE */
+        .theme-switcher {
+            background: #0a0a0a;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        
+        .theme-switcher label {
+            color: #f4f6f8;
+            font-family: 'Inter', sans-serif;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background: #111;
+            color: #00b4d8;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* STRUCTURE COMMUNE */
+        header {
+            background-color: var(--card);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border-bottom: var(--border);
+            border-color: var(--primary);
+            transition: all 0.4s ease;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+        
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; color: var(--text); line-height: 1.2; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px auto; opacity: 0.9; }
+        
+        .floating-element {
+            width: 60px; height: 60px;
+            background-color: var(--primary);
+            opacity: 0.1;
+            border-radius: var(--radius);
+            position: absolute;
+            top: 20px; right: 10%;
+            animation: var(--anim-float);
+        }
+
+        @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes float-cyber { 0%, 100% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.2); opacity: 0.8; box-shadow: 0 0 20px var(--primary); } }
+        @keyframes float-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--bg);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: var(--shadow);
+            border: var(--border);
+            border-color: var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
+
+        /* GRILLES ET CARTES */
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 2rem; color: var(--primary); }
+        .grid-container {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 50px 20px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        
+        .card-item, .stat-item, .testimonial-item {
+            background-color: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: var(--border);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .card-item:hover, .testimonial-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); border-color: var(--text); }
+        
+        .card-item { width: 100%; max-width: 320px; }
+        .card-item h3 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
+
+        .stat-item { width: 100%; max-width: 250px; text-align: center; border-top: none; border-bottom: 4px solid var(--primary); }
+        .stat-item h2 { font-size: 2.5rem; margin: 0 0 10px 0; color: var(--primary); }
+        .stat-item p { margin: 0; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+
+        .testimonial-item { width: 100%; max-width: 450px; font-style: italic; border-top: none; border-left: 4px solid var(--primary); }
+        .testimonial-item cite { display: block; margin-top: 15px; font-weight: bold; color: var(--primary); font-style: normal; }
+
+        footer {
+            background-color: var(--card); text-align: center; padding: 40px 20px;
+            border-top: var(--border); border-color: var(--secondary); font-size: 15px; line-height: 1.6;
+        }
+
+        /* ========================================================= */
+        /* LES 50 THEMES (STRICTEMENT DANS LA CHARTE COULEURS)       */
+        /* Couleurs : #175389, #007bff, #00b4d8, #0a0a0a, #111, #f4f6f8, #fff, #e0e0e0 */
+        /* ========================================================= */
+        
+        /* 1-10: Corporate B2B (Clair, Bleu Foncé, Clean) */
+        .t1 { --bg:#f4f6f8; --text:#111; --primary:#175389; --secondary:#e0e0e0; --card:#fff; --font:'Inter', sans-serif; --radius:8px; --border:1px solid transparent; }
+        .t2 { --bg:#fff; --text:#0a0a0a; --primary:#175389; --secondary:#f4f6f8; --card:#fff; --font:'Montserrat', sans-serif; --radius:4px; --shadow:0 10px 30px rgba(23,83,137,0.1); }
+        .t3 { --bg:#e0e0e0; --text:#111; --primary:#175389; --secondary:#ccc; --card:#f4f6f8; --font:'Roboto', sans-serif; --radius:0px; --border:1px solid #175389; --shadow:none; }
+        .t4 { --bg:#f4f6f8; --text:#333; --primary:#007bff; --secondary:#e0e0e0; --card:#fff; --font:'Quicksand', sans-serif; --radius:12px; --shadow:0 4px 6px rgba(0,123,255,0.1); }
+        .t5 { --bg:#fff; --text:#111; --primary:#175389; --secondary:#e0e0e0; --card:#f4f6f8; --font:'Playfair Display', serif; --radius:0px; --border:none; --shadow:0 2px 4px rgba(0,0,0,0.05); }
+        .t6 { --bg:#f4f6f8; --text:#0a0a0a; --primary:#00b4d8; --secondary:#fff; --card:#fff; --font:'Inter', sans-serif; --radius:16px; --border:1px solid #e0e0e0; }
+        .t7 { --bg:#e0e0e0; --text:#111; --primary:#175389; --secondary:#f4f6f8; --card:#fff; --font:'Oswald', sans-serif; --radius:0px; --shadow:8px 8px 0 rgba(23,83,137,0.2); --anim-float: float-spin 10s linear infinite; }
+        .t8 { --bg:#fff; --text:#111; --primary:#175389; --secondary:#e0e0e0; --card:#fff; --font:'Lora', serif; --radius:4px; --border:1px solid #e0e0e0; --shadow:none; }
+        .t9 { --bg:#f4f6f8; --text:#111; --primary:#007bff; --secondary:#e0e0e0; --card:#fff; --font:'Rajdhani', sans-serif; --radius:6px; --shadow:0 4px 15px rgba(0,0,0,0.08); }
+        .t10 { --bg:#fff; --text:#0a0a0a; --primary:#175389; --secondary:#f4f6f8; --card:#f4f6f8; --font:'Bebas Neue', sans-serif; --radius:0px; --border:2px solid #111; --shadow:none; }
+
+        /* 11-20: Cyber / Dark Tech (Noir, Bleu Néon/Cyan) */
+        .t11 { --bg:#0a0a0a; --text:#f4f6f8; --primary:#007bff; --secondary:#111; --card:#111; --font:'Space Mono', monospace; --radius:0px; --border:1px solid #007bff; --shadow:0 0 15px rgba(0,123,255,0.3); --anim-float: float-cyber 2s infinite; }
+        .t12 { --bg:#111; --text:#e0e0e0; --primary:#00b4d8; --secondary:#0a0a0a; --card:#0a0a0a; --font:'Rajdhani', sans-serif; --radius:8px; --border:1px solid #333; --shadow:0 0 20px rgba(0,180,216,0.2); }
+        .t13 { --bg:#000; --text:#fff; --primary:#175389; --secondary:#111; --card:#0a0a0a; --font:'Inter', sans-serif; --radius:4px; --border:1px solid #175389; }
+        .t14 { --bg:#0a0a0a; --text:#e0e0e0; --primary:#007bff; --secondary:#111; --card:#111; --font:'Oswald', sans-serif; --radius:0px; --shadow:4px 4px 0 #007bff; --border:1px solid #111; }
+        .t15 { --bg:#111; --text:#f4f6f8; --primary:#00b4d8; --secondary:#222; --card:#1a1a1a; --font:'Montserrat', sans-serif; --radius:12px; --border:none; --shadow:0 10px 30px rgba(0,0,0,0.8); }
+        .t16 { --bg:#000; --text:#f4f6f8; --primary:#007bff; --secondary:#0a0a0a; --card:#111; --font:'Bebas Neue', sans-serif; --radius:0px; --border:2px solid #007bff; --shadow:none; }
+        .t17 { --bg:#0a0a0a; --text:#ccc; --primary:#175389; --secondary:#000; --card:#111; --font:'Space Mono', monospace; --radius:4px; --border:1px dashed #175389; }
+        .t18 { --bg:#111; --text:#f4f6f8; --primary:#00b4d8; --secondary:#0a0a0a; --card:#000; --font:'Quicksand', sans-serif; --radius:20px; --border:1px solid #00b4d8; --shadow:0 0 10px rgba(0,180,216,0.1); }
+        .t19 { --bg:#000; --text:#e0e0e0; --primary:#007bff; --secondary:#111; --card:#0a0a0a; --font:'Playfair Display', serif; --radius:0px; --border:1px solid #333; }
+        .t20 { --bg:#0a0a0a; --text:#fff; --primary:#00b4d8; --secondary:#111; --card:#111; --font:'Roboto', sans-serif; --radius:8px; --border:1px solid #222; --shadow:0 5px 15px rgba(0,180,216,0.15); }
+
+        /* 21-30: B2C / Soft / Clean (Blanc, Cyan, Très arrondi) */
+        .t21 { --bg:#f4f6f8; --text:#111; --primary:#00b4d8; --secondary:#fff; --card:#fff; --font:'Quicksand', sans-serif; --radius:30px; --border:none; --shadow:0 10px 25px rgba(0,180,216,0.1); }
+        .t22 { --bg:#fff; --text:#333; --primary:#00b4d8; --secondary:#f4f6f8; --card:#f4f6f8; --font:'Montserrat', sans-serif; --radius:24px; --border:none; --shadow:none; }
+        .t23 { --bg:#e0e0e0; --text:#111; --primary:#00b4d8; --secondary:#f4f6f8; --card:#fff; --font:'Inter', sans-serif; --radius:20px; --border:2px solid #fff; --shadow:0 5px 15px rgba(0,0,0,0.05); }
+        .t24 { --bg:#f4f6f8; --text:#0a0a0a; --primary:#007bff; --secondary:#e0e0e0; --card:#fff; --font:'Roboto', sans-serif; --radius:30px; --border:none; --shadow:0 8px 16px rgba(0,123,255,0.08); }
+        .t25 { --bg:#fff; --text:#111; --primary:#00b4d8; --secondary:#f4f6f8; --card:#fff; --font:'Lora', serif; --radius:40px; --border:1px solid #f4f6f8; --shadow:0 4px 12px rgba(0,180,216,0.1); }
+        .t26 { --bg:#f4f6f8; --text:#111; --primary:#175389; --secondary:#fff; --card:#fff; --font:'Quicksand', sans-serif; --radius:50px; --border:none; --shadow:0 10px 20px rgba(23,83,137,0.1); }
+        .t27 { --bg:#fff; --text:#333; --primary:#00b4d8; --secondary:#f4f6f8; --card:#fff; --font:'Rajdhani', sans-serif; --radius:15px; --border:1px solid #00b4d8; --shadow:none; }
+        .t28 { --bg:#f4f6f8; --text:#111; --primary:#007bff; --secondary:#e0e0e0; --card:#f4f6f8; --font:'Playfair Display', serif; --radius:25px; --border:none; --shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff; /* Neumorphism */ }
+        .t29 { --bg:#e0e0e0; --text:#0a0a0a; --primary:#00b4d8; --secondary:#ccc; --card:#e0e0e0; --font:'Montserrat', sans-serif; --radius:20px; --border:none; --shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; }
+        .t30 { --bg:#fff; --text:#111; --primary:#007bff; --secondary:#f4f6f8; --card:#fff; --font:'Space Mono', monospace; --radius:30px; --border:2px solid #e0e0e0; --shadow:0 5px 10px rgba(0,0,0,0.02); }
+
+        /* 31-40: Industriel / Brutaliste (Gris, Noir, Bleu, Carré, Bordures épaisses) */
+        .t31 { --bg:#e0e0e0; --text:#0a0a0a; --primary:#175389; --secondary:#ccc; --card:#fff; --font:'Oswald', sans-serif; --radius:0px; --border:3px solid #0a0a0a; --shadow:6px 6px 0 #0a0a0a; }
+        .t32 { --bg:#f4f6f8; --text:#111; --primary:#007bff; --secondary:#e0e0e0; --card:#f4f6f8; --font:'Bebas Neue', sans-serif; --radius:0px; --border:4px solid #111; --shadow:8px 8px 0 #007bff; }
+        .t33 { --bg:#111; --text:#f4f6f8; --primary:#175389; --secondary:#0a0a0a; --card:#111; --font:'Space Mono', monospace; --radius:0px; --border:2px solid #175389; --shadow:5px 5px 0 #175389; }
+        .t34 { --bg:#fff; --text:#0a0a0a; --primary:#0a0a0a; --secondary:#e0e0e0; --card:#fff; --font:'Inter', sans-serif; --radius:0px; --border:2px solid #0a0a0a; --shadow:none; }
+        .t35 { --bg:#0a0a0a; --text:#e0e0e0; --primary:#00b4d8; --secondary:#111; --card:#111; --font:'Rajdhani', sans-serif; --radius:0px; --border:1px solid #e0e0e0; --shadow:10px 10px 0 rgba(224,224,224,0.1); }
+        .t36 { --bg:#e0e0e0; --text:#111; --primary:#007bff; --secondary:#ccc; --card:#e0e0e0; --font:'Oswald', sans-serif; --radius:0px; --border:2px dashed #111; --shadow:none; }
+        .t37 { --bg:#175389; --text:#f4f6f8; --primary:#00b4d8; --secondary:#111; --card:#111; --font:'Roboto', sans-serif; --radius:0px; --border:1px solid #175389; --shadow:none; }
+        .t38 { --bg:#f4f6f8; --text:#0a0a0a; --primary:#175389; --secondary:#fff; --card:#fff; --font:'Playfair Display', serif; --radius:0px; --border:5px solid #175389; --shadow:none; }
+        .t39 { --bg:#111; --text:#fff; --primary:#007bff; --secondary:#000; --card:#0a0a0a; --font:'Inter', sans-serif; --radius:0px; --border:1px solid #fff; --shadow:3px 3px 0 #fff; }
+        .t40 { --bg:#e0e0e0; --text:#111; --primary:#175389; --secondary:#f4f6f8; --card:#fff; --font:'Bebas Neue', sans-serif; --radius:0px; --border:none; --shadow:15px 15px 0 rgba(23,83,137,0.2); }
+
+        /* 41-50: Luxe / Premium / Sombre (Mix élégant) */
+        .t41 { --bg:#111; --text:#f4f6f8; --primary:#f4f6f8; --secondary:#0a0a0a; --card:#0a0a0a; --font:'Playfair Display', serif; --radius:2px; --border:1px solid #333; --shadow:0 10px 30px rgba(0,0,0,0.5); }
+        .t42 { --bg:#0a0a0a; --text:#e0e0e0; --primary:#175389; --secondary:#111; --card:#111; --font:'Lora', serif; --radius:0px; --border:1px solid #175389; --shadow:none; }
+        .t43 { --bg:#f4f6f8; --text:#111; --primary:#111; --secondary:#e0e0e0; --card:#fff; --font:'Playfair Display', serif; --radius:4px; --border:none; --shadow:0 5px 15px rgba(0,0,0,0.05); }
+        .t44 { --bg:#175389; --text:#fff; --primary:#f4f6f8; --secondary:#0a0a0a; --card:#111; --font:'Montserrat', sans-serif; --radius:8px; --border:none; --shadow:0 10px 20px rgba(0,0,0,0.3); }
+        .t45 { --bg:#111; --text:#fff; --primary:#00b4d8; --secondary:#000; --card:#0a0a0a; --font:'Quicksand', sans-serif; --radius:12px; --border:1px solid #222; --shadow:none; }
+        .t46 { --bg:#0a0a0a; --text:#f4f6f8; --primary:#175389; --secondary:#111; --card:#111; --font:'Inter', sans-serif; --radius:6px; --border:none; --shadow:0 4px 20px rgba(23,83,137,0.2); }
+        .t47 { --bg:#f4f6f8; --text:#175389; --primary:#0a0a0a; --secondary:#fff; --card:#fff; --font:'Lora', serif; --radius:0px; --border:1px solid #175389; --shadow:none; }
+        .t48 { --bg:#e0e0e0; --text:#111; --primary:#0a0a0a; --secondary:#ccc; --card:#f4f6f8; --font:'Playfair Display', serif; --radius:8px; --border:none; --shadow:0 10px 25px rgba(0,0,0,0.1); }
+        .t49 { --bg:#000; --text:#e0e0e0; --primary:#007bff; --secondary:#111; --card:#0a0a0a; --font:'Montserrat', sans-serif; --radius:2px; --border:1px solid #007bff; --shadow:none; }
+        .t50 { --bg:#175389; --text:#f4f6f8; --primary:#00b4d8; --secondary:#111; --card:#0a0a0a; --font:'Oswald', sans-serif; --radius:0px; --border:none; --shadow:0 15px 30px rgba(0,0,0,0.4); }
+
+    </style>
+</head>
+<body class="t1">
+
+    <!-- Barre collante en haut pour sélectionner les thèmes -->
+    <div class="theme-switcher">
+        <label for="themeSelect">Sélectionnez un style (Couleurs R.K.H) :</label>
+        <select id="themeSelect" onchange="document.body.className = this.value">
+            <optgroup label="Corporate B2B (Clair & Bleu)">
+                <option value="t1" selected>1. Corporate Standard (Inter)</option>
+                <option value="t2">2. Corporate Ombré (Montserrat)</option>
+                <option value="t3">3. B2B Strict Gris (Roboto)</option>
+                <option value="t4">4. B2B Moderne Cyan (Quicksand)</option>
+                <option value="t5">5. B2B Élégant (Playfair)</option>
+                <option value="t6">6. B2B Lumineux (Cyan/Blanc)</option>
+                <option value="t7">7. Corporate Brut (Oswald + Ombre dure)</option>
+                <option value="t8">8. Corporate Éditorial (Lora)</option>
+                <option value="t9">9. Corporate Tech (Rajdhani)</option>
+                <option value="t10">10. Corporate Impact (Bebas Neue)</option>
+            </optgroup>
+            <optgroup label="Cyber & Tech (Mode Sombre)">
+                <option value="t11">11. Cyberpunk Bleu Néon (Space Mono)</option>
+                <option value="t12">12. Tech Sombre Cyan (Rajdhani)</option>
+                <option value="t13">13. Nuit Profonde Bleu Foncé (Inter)</option>
+                <option value="t14">14. Sombre Brutaliste Néon (Oswald)</option>
+                <option value="t15">15. Dark Mode Clean (Montserrat)</option>
+                <option value="t16">16. Sombre Impact (Bebas Neue)</option>
+                <option value="t17">17. Console Ligne de Code (Space Mono)</option>
+                <option value="t18">18. Nuit Arrondie Cyan (Quicksand)</option>
+                <option value="t19">19. Sombre Éditorial Bleu (Playfair)</option>
+                <option value="t20">20. Tech Doux (Roboto)</option>
+            </optgroup>
+            <optgroup label="B2C & Soft (Arrondis & Cyan)">
+                <option value="t21">21. Nettoyage Douceur Max (Quicksand)</option>
+                <option value="t22">22. B2C Épuré Blanc (Montserrat)</option>
+                <option value="t23">23. B2C Gris perle/Cyan (Inter)</option>
+                <option value="t24">24. B2C Dynamique Bleu (Roboto)</option>
+                <option value="t25">25. B2C Charme (Lora)</option>
+                <option value="t26">26. B2C Bulle Bleu Foncé (Quicksand)</option>
+                <option value="t27">27. B2C Technique (Rajdhani)</option>
+                <option value="t28">28. B2C Neumorphism Effet 3D</option>
+                <option value="t29">29. B2C Neumorphism Gris</option>
+                <option value="t30">30. B2C Minimaliste (Space Mono)</option>
+            </optgroup>
+            <optgroup label="Industriel & Brut (Gris, Noir, Carré)">
+                <option value="t31">31. Chantier Industriel Brut (Oswald)</option>
+                <option value="t32">32. Industriel Néon (Bebas Neue)</option>
+                <option value="t33">33. Industriel Sombre Bleu (Space Mono)</option>
+                <option value="t34">34. Brutalisme Minimal (Inter, Noir/Blanc)</option>
+                <option value="t35">35. Tech Industriel Cyan (Rajdhani)</option>
+                <option value="t36">36. Chantier Pointillé (Oswald)</option>
+                <option value="t37">37. Bleu Acier Industriel (Roboto)</option>
+                <option value="t38">38. Brutalisme Luxe (Playfair)</option>
+                <option value="t39">39. Brutalisme Nuit Inversé</option>
+                <option value="t40">40. Industriel Épais Bleu (Bebas Neue)</option>
+            </optgroup>
+            <optgroup label="Premium & Luxe (Sombre & Raffiné)">
+                <option value="t41">41. Prestige Parisien (Playfair, Noir)</option>
+                <option value="t42">42. Luxe Discret Bleu Foncé (Lora)</option>
+                <option value="t43">43. Luxe Clair Noir/Blanc (Playfair)</option>
+                <option value="t44">44. Fond Bleu Institutionnel (Montserrat)</option>
+                <option value="t45">45. Premium Moderne Cyan (Quicksand)</option>
+                <option value="t46">46. Discrétion B2B Sombre (Inter)</option>
+                <option value="t47">47. Luxe Blanc & Bleu (Lora)</option>
+                <option value="t48">48. Premium Gris & Noir (Playfair)</option>
+                <option value="t49">49. Nuit Couture Néon (Montserrat)</option>
+                <option value="t50">50. Contraste Bleu/Noir Extrême (Oswald)</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <!-- Contenu du site vitrine -->
+        <a href="tel:0606493101" style="color: var(--text); text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 1.1rem; transition: color 0.3s;">
+            📞 06 06 49 31 01
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="floating-element"></div>
+        <h1>Maintenance & Nettoyage d'Excellence</h1>
+        <p>Solutions professionnelles sur-mesure pour les particuliers (B2C) et les entreprises (B2B) en Île-de-France. De la maintenance technique au nettoyage complet.</p>
+        <a href="#contact" class="btn">Demander un devis gratuit</a>
+    </section>
+
+    <!-- Section Services -->
+    <section class="services">
+        <h2 class="section-title">Nos Prestations</h2>
+        <div class="grid-container">
+            <div class="card-item">
+                <h3>🧹 Nettoyage B2C & B2B</h3>
+                <p>Prestations de nettoyage haute qualité pour vos véhicules, appartements et le traitement spécifique de vos textiles.</p>
+            </div>
+            <div class="card-item">
+                <h3>🔧 Maintenance Technique</h3>
+                <p>Interventions rapides et efficaces pour tous vos besoins en petite maintenance, bricolage et réparations diverses.</p>
+            </div>
+            <div class="card-item">
+                <h3>⚡ Intervention Rapide</h3>
+                <p>Une équipe réactive et ponctuelle disponible pour les professionnels et les particuliers, garantissant un résultat impeccable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section : Chiffres Clés -->
+    <section class="stats" style="background-color: var(--secondary); padding: 40px 0;">
+        <h2 class="section-title" style="color: var(--text);">R.K.H en chiffres</h2>
+        <div class="grid-container" style="padding: 20px;">
+            <div class="stat-item">
+                <h2>10+</h2>
+                <p>Ans d'expérience</p>
+            </div>
+            <div class="stat-item">
+                <h2>500+</h2>
+                <p>Interventions réussies</p>
+            </div>
+            <div class="stat-item">
+                <h2>7j/7</h2>
+                <p>Disponibilité</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section : Témoignages -->
+    <section class="testimonials">
+        <h2 class="section-title" style="margin-top: 50px;">Ils nous font confiance</h2>
+        <div class="grid-container">
+            <div class="testimonial-item">
+                <p>"Une intervention rapide et un nettoyage de nos bureaux impeccable. L'équipe est très professionnelle, je recommande vivement pour les contrats B2B."</p>
+                <cite>- Sophie M., Gérante de société</cite>
+            </div>
+            <div class="testimonial-item">
+                <p>"J'ai fait appel à R.K.H pour la maintenance et le nettoyage de mon appartement après des travaux. Résultat parfait, équipe ponctuelle et soignée."</p>
+                <cite>- Thomas L., Particulier</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="color: var(--primary); margin-top: 0;">RAFIK HAMZAOUI</h2>
+        <p style="font-weight: bold;">Président R.K.H INDUSTRY</p>
+        <div style="margin: 20px 0; opacity: 0.9;">
+            <p>📍 60 Rue François 1er, 75008 Paris</p>
+            <p>📧 contact@rkh-industry.fr</p>
+            <p>📞 06 06 49 31 01</p>
+        </div>
+        <p style="font-size: 0.9em; opacity: 0.7;">SIRET : 103 746 111 00014</p>
+    </footer>
+
+</body>
+</html>
